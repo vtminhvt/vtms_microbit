@@ -1,0 +1,20 @@
+let KhoangCach = 0
+let ngaunhien = 0
+basic.forever(function () {
+    KhoangCach = maqueen.Ultrasonic(PingUnit.Centimeters)
+    if (KhoangCach <= 30 && KhoangCach != 0) {
+        ngaunhien = Math.randomRange(0, 1)
+        if (ngaunhien == 0) {
+            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 120)
+            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 0)
+            basic.pause(800)
+        } else {
+            maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 0)
+            maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 120)
+            basic.pause(800)
+        }
+    } else {
+        maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 120)
+        maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 120)
+    }
+})
